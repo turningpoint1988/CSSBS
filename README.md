@@ -116,5 +116,5 @@ Generating `score.txt` recording the area under the receiver operating character
 
 ## References
 
-[1] 
+[1]  </br>
 [2] 
