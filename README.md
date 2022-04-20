@@ -30,11 +30,11 @@ cd ./GK/
 python get_data.py & get_chromatin.py 
 ```
 
-For those TFs which lack binding peaks, we will use the peak calling software SPP [2] to generate corresponding binding peaks.
+For those TFs which lack binding peaks, we will use the peak calling software SPP [1] to generate corresponding binding peaks.
 
 
 ## Differential Binding sites Preparation
-We used DESeq2[1] to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
+We used DESeq2[2] to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
 
 
 ## Model Training
@@ -116,5 +116,5 @@ Generating `score.txt` recording the area under the receiver operating character
 
 ## References
 
-[1] Love, Michael I., Wolfgang Huber, and Simon Anders. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2." Genome biology 15.12 (2014): 1-21. </br>
-[2] Kharchenko, Peter V., Michael Y. Tolstorukov, and Peter J. Park. "Design and analysis of ChIP-seq experiments for DNA-binding proteins." Nature biotechnology 26.12 (2008): 1351-1359.
+[1] Kharchenko, Peter V., Michael Y. Tolstorukov, and Peter J. Park. "Design and analysis of ChIP-seq experiments for DNA-binding proteins." Nature biotechnology 26.12 (2008): 1351-1359. </br>
+[2] Love, Michael I., Wolfgang Huber, and Simon Anders. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2." Genome biology 15.12 (2014): 1-21.
