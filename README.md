@@ -21,19 +21,31 @@ Computational prediction and characterization of cell-type-specific and shared b
 - [DESeq2](http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html): The tool is used for data preparation.
 
 
+## Downloading Datasets
+
+We offered the python scripts for downloading ChIP-seq datasets and chromatin landscapes by just runing: <br>
+
+```
+cd ./GK/
+python get_data.py & get_chromatin.py 
+```
+
+For those TFs which lack binding peaks, we will use the peak calling software SPP to generate corresponding binding peaks.
+
+
 ## Differential Binding sites Preparation
-We used DESeq2 to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
+We used DESeq2[1] to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
 
 
 ## Model Training
 
-we constructed two models, in which one is based on XGBoost and another is based on CNN.
+We constructed two models, in which one is based on XGBoost and another is based on CNN.
 
 
-Train FCNsignal models on specified datasets:
+- Train the XGBoost-based model on specified datasets:
 
 ```
-python run_signal.py -d <> -n <> -g <> -s <> -b <> -e <> -c <>
+python xgb_classifier.py -d <> -n <> -g <> -s <> -b <> -e <> -c <>
 ```
 
 | Arguments  | Description                                                                      |
