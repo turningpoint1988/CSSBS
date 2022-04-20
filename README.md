@@ -23,14 +23,14 @@ Computational prediction and characterization of cell-type-specific and shared b
 
 ## Downloading Datasets
 
-We offered the python scripts for downloading ChIP-seq datasets and chromatin landscapes by just runing: <br>
+We have offered the python scripts for downloading ChIP-seq datasets and chromatin landscapes by just runing: <br>
 
 ```
 cd ./GK/
 python get_data.py & get_chromatin.py 
 ```
 
-For those TFs which lack binding peaks, we will use the peak calling software SPP to generate corresponding binding peaks.
+For those TFs which lack binding peaks, we will use the peak calling software SPP [2] to generate corresponding binding peaks.
 
 
 ## Differential Binding sites Preparation
@@ -117,3 +117,4 @@ Generating `score.txt` recording the area under the receiver operating character
 ## References
 
 [1] 
+[2] 
