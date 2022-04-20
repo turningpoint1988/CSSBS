@@ -97,7 +97,7 @@ python xgb_test.py -d <> -n <> -c <>
 
 Generating `score.txt` recording the area under the receiver operating characteristic curve (AUC) and the area under the precision-recall curve (PRAUC).
 
-### Testing the XGBoost-based model:
+### Testing the CNN-based model:
 
 ```
 python test.py -d <> -n <> -c <>
@@ -105,11 +105,15 @@ python test.py -d <> -n <> -c <>
 
 | Arguments  | Description                                                                                 |
 | ---------- | ------------------------------------------------------------------------------------------- |
-| -d         | The path of a specified dataset, e.g. /your_path/FCNsignal/HeLa-S3/CTCF/data                |
+| -d         | The path of a specified dataset, e.g. /your_path/CSSBSs/GK                |
 | -n         | The name of the specified dataset, e.g. CTCF                                                |
 | -g         | The GPU device id (default is 0)                                                            |
-| -c         | The trained model path of a specified dataset, e.g. /your_path/FCNsignal/models/HeLa-S3/CTCF|
+| -c         | The trained model path of a specified dataset, e.g. /your_path/CSSBSs/models_cnn/CTCF |
 
 ### Output
 
 Generating `score.txt` recording the area under the receiver operating characteristic curve (AUC) and the area under the precision-recall curve (PRAUC).
+
+## References
+
+[1] 
