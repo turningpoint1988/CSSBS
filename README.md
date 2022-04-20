@@ -2,7 +2,11 @@
 Computational prediction and characterization of cell-type-specific and shared binding sites (CSSBSs). 
 
 <p align="center"> 
-<img src=https://github.com/turningpoint1988/CSSBSs/blob/main/flowchart.jpg>
+<img src=https://github.com/turningpoint1988/CSSBSs/blob/main/Figure1.jpg>
+</p>
+
+<p align="center"> 
+<img src=https://github.com/turningpoint1988/CSSBSs/blob/main/Figure2.jpg>
 </p>
 
 ## Prerequisites and Dependencies
