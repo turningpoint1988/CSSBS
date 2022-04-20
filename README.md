@@ -116,5 +116,5 @@ Generating `score.txt` recording the area under the receiver operating character
 
 ## References
 
-[1]  </br>
-[2] 
+[1] Love, Michael I., Wolfgang Huber, and Simon Anders. "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2." Genome biology 15.12 (2014): 1-21. </br>
+[2] Kharchenko, Peter V., Michael Y. Tolstorukov, and Peter J. Park. "Design and analysis of ChIP-seq experiments for DNA-binding proteins." Nature biotechnology 26.12 (2008): 1351-1359.
