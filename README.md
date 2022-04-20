@@ -22,20 +22,13 @@ Computational prediction and characterization of cell-type-specific and shared b
 
 
 ## Differential Binding sites Preparation
-We All cell-type-specific and shared binding peaks have been prepared well which can be found in the directory 'GK'
-
-```
-python bed2signal.py -d <> -n <> -s <>
-```
-
-| Arguments   | Description                                                    |
-| ----------- | -------------------------------------------------------------- |
-| -d          | The path of datasets, e.g. /your_path/FCNsignal/HeLa-S3/CTCF   |
-| -n          | The name of the specified dataset, e.g. CTCF                   |
-| -s          | Random seed (default is 666)                                   |
+We used DESeq2 to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
 
 
 ## Model Training
+
+we constructed two models, in which one is based on XGBoost and another is based on CNN.
+
 
 Train FCNsignal models on specified datasets:
 
