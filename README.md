@@ -16,7 +16,7 @@ Computational prediction and characterization of cell-type-specific and shared b
 - CUDA 9.0
 - Python 3.6
 - Python packages: biopython, scikit-learn, pyBigWig, scipy, pandas, matplotlib, seaborn
-- Download [hg19.fa](https://hgdownload.soe.ucsc.edu/downloads.html#human) then unzip them and put them into `hg19/`
+- Download [hg19.fa](https://hgdownload.soe.ucsc.edu/downloads.html#human) then unzip them and put it into `hg19/`
 
 ## Other Tools
 
