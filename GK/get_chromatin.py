@@ -31,11 +31,11 @@ def download(inputfile, outdir):
 
 root = osp.dirname(__file__)
 # GM12878
-inputfile = root + '/GM12878_chromatin.list'
+inputfile = root + '/Chromatin/GM12878/GM12878_chromatin.list'
 outdir = root + '/Chromatin/GM12878'
 download(inputfile, outdir)
 # K562
-inputfile = root + '/K562_chromatin.list'
+inputfile = root + '/Chromatin/K562/K562_chromatin.list'
 outdir = root + '/Chromatin/K562'
 download(inputfile, outdir)
 
