@@ -64,7 +64,7 @@ We constructed two models, in which one is based on XGBoost and another is based
 ### 1. Training the XGBoost-based model:
 
 ```
-python xgb_trian.py -d <> -n <> -c <>
+python xgb_train.py -d <> -n <> -c <>
 ```
 
 | Arguments  | Description                                                                |
