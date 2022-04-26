@@ -1,5 +1,5 @@
-# CSSBSs
-Computational prediction and characterization of cell-type-specific and shared binding sites (CSSBSs). 
+# CSSBS
+Computational prediction and characterization of cell-type-specific and shared binding sites (CSSBS). 
 
 <p align="center"> 
 <img src=https://github.com/turningpoint1988/CSSBSs/blob/main/Picture1.jpg>
@@ -22,6 +22,7 @@ Computational prediction and characterization of cell-type-specific and shared b
 
 - [MEME Suite](https://meme-suite.org/meme/doc/download.html): The tool integrates several methods used by this paper, including MEME, TOMTOM and FIMO.
 - [Bedtools](https://bedtools.readthedocs.io/en/latest/content/installation.html): The tool is used for data preparation.
+- [Samtools](https://github.com/samtools/samtools): The tool is used for data preparation
 - [DESeq2](http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html): The tool is used for data preparation.
 
 
@@ -38,8 +39,11 @@ For those TFs which lack binding peaks, we will use the peak calling software SP
 
 
 ## Differential Binding sites Preparation
-We used DESeq2[2] to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, before doing this, you should calculate the number of reads from each cell line falling into the merged peaks by Bedtools, which are separately denoted by 'GM12878_count.bed' and 'K562_count.bed' in the R script. 
+We used DESeq2[2] to generate all cell-type-specific and shared binding peaks, which can be found in the directory 'GK'. If you want to generate them from new TFs and cell types, we also provided the R script 'DESeq2.R' in the directory 'GK'. However, at first, you should calculate the number of reads from each cell line falling into the merged peaks by running the shell script 'merge_peak.sh', whose outputs are separately denoted by 'GM12878_count.bed' and 'K562_count.bed'. Then, running the R script 'DESeq2.R'.
 
+```
+bash merge_peak.sh <target>
+```
 
 ## Model Training
 
@@ -49,18 +53,18 @@ We constructed two models, in which one is based on XGBoost and another is based
 ### 1. Training the XGBoost-based model:
 
 ```
-python xgb_classifier.py -d <> -n <> -c <>
+python xgb_trian.py -d <> -n <> -c <>
 ```
 
 | Arguments  | Description                                                                |
 | ---------- | ---------------------------------------------------------------------------|
-| -d         | The path of a specified dataset, e.g. /your_path/CSSBSs/GK                 |
+| -d         | The path of a specified dataset, e.g. /your_path/CSSBS/GK                 |
 | -n         | The name of the specified dataset, e.g. CTCF                               |
-| -c         | The path for storing models, e.g. /your_path/CSSBSs/models_xgb/CTCF   |
+| -c         | The path for storing models, e.g. /your_path/CSSBS/models_xgb/CTCF   |
 
 ### Output
 
-A trained model for the XGBoost-based model on the specified dataset. For example, A trained model is saved as `/your_path/CSSBSs/models_xgb/CTCF/model.json`. 
+A trained model for the XGBoost-based model on the specified dataset. For example, A trained model is saved as `/your_path/CSSBS/models_xgb/CTCF/model.json`. 
 
 
 ### 2. Training the CNN-based model:
@@ -71,17 +75,17 @@ python train.py -d <> -n <> -g <> -s <> -b <> -e <> -c <>
 
 | Arguments  | Description                                                                      |
 | ---------- | -------------------------------------------------------------------------------- |
-| -d         | The path of a specified dataset, e.g. /your_path/FCNsignal/HeLa-S3/CTCF/data     |
+| -d         | The path of a specified dataset, e.g. /your_path/CSSBS/HeLa-S3/CTCF/encode     |
 | -n         | The name of the specified dataset, e.g. CTCF                                     |
 | -g         | The GPU device id (default is 0)                                                 |
 | -s         | Random seed                                                                      |
 | -b         | The number of sequences in a batch size (default is 300)                         |
 | -e         | The epoch of training steps (default is 50)                                      |
-| -c         | The path for storing models, e.g. /your_path/FCNsignal/models/HeLa-S3/CTCF       |
+| -c         | The path for storing models, e.g. /your_path/CSSBS/models_cnn/HeLa-S3/CTCF       |
 
 ### Output
 
-A trained model for the CNN-based model on the specified dataset. For example, A trained model is saved as `/your_path/CSSBSs/models_cnn/CTCF/model_best.pth`.
+A trained model for the CNN-based model on the specified dataset. For example, A trained model is saved as `/your_path/CSSBS/models_cnn/CTCF/model_best.pth`.
 
 ## Testing 
 
@@ -93,13 +97,13 @@ python xgb_test.py -d <> -n <> -c <>
 
 | Arguments  | Description                                                                |
 | ---------- | ---------------------------------------------------------------------------|
-| -d         | The path of a specified dataset, e.g. /your_path/CSSBSs/GK                 |
+| -d         | The path of a specified dataset, e.g. /your_path/CSSBS/GK                 |
 | -n         | The name of the specified dataset, e.g. CTCF                               |
-| -c         | The path of the trained model, e.g. /your_path/CSSBSs/models_xgb/CTCF   |
+| -c         | The path of the trained model, e.g. /your_path/CSSBS/models_xgb/CTCF   |
 
 ### Output
 
-Generating `score.txt` recording the area under the receiver operating characteristic curve (AUC) and the area under the precision-recall curve (PRAUC).
+Generating `score.txt` recording the area under the receiver operating characteristic curve (AUC) and the area under the precision-recall curve (PRAUC), and calculating the SHAP values for cell-type-specific (positive) and shared (negative) binding peaks.
 
 ### Testing the CNN-based model:
 
@@ -109,10 +113,10 @@ python test.py -d <> -n <> -c <>
 
 | Arguments  | Description                                                                                 |
 | ---------- | ------------------------------------------------------------------------------------------- |
-| -d         | The path of a specified dataset, e.g. /your_path/CSSBSs/GK                |
+| -d         | The path of a specified dataset, e.g. /your_path/CSSBS/GK                |
 | -n         | The name of the specified dataset, e.g. CTCF                                                |
 | -g         | The GPU device id (default is 0)                                                            |
-| -c         | The trained model path of a specified dataset, e.g. /your_path/CSSBSs/models_cnn/CTCF |
+| -c         | The trained model path of a specified dataset, e.g. /your_path/CSSBS/models_cnn/CTCF |
 
 ### Output
 
