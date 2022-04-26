@@ -1,0 +1,17 @@
+E116-DNase.pval.signal.bigwig		 
+E116-H2A.Z.pval.signal.bigwig		 
+E116-H3K4me1.pval.signal.bigwig		 
+E116-H3K4me2.pval.signal.bigwig		 
+E116-H3K4me3.pval.signal.bigwig		 
+E116-H3K9ac.pval.signal.bigwig		 
+E116-H3K9me3.pval.signal.bigwig		 
+E116-H3K27ac.pval.signal.bigwig		 
+E116-H3K27me3.pval.signal.bigwig    		 
+E116-H3K36me3.pval.signal.bigwig		 
+E116-H3K79me2.pval.signal.bigwig		 
+E116-H4K20me1.pval.signal.bigwig		 
+MNase   ENCFF000VME
+RNA_plus1   ENCFF755RBT
+RNA_plus2   ENCFF319UTC
+RNA_minus1  ENCFF975RWM
+RNA_minus2  ENCFF282OWV
