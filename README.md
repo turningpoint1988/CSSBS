@@ -45,6 +45,17 @@ We used DESeq2[2] to generate all cell-type-specific and shared binding peaks, w
 bash merge_peak.sh <target>
 ```
 
+## Inputs
+For the XGBoost-based model, we contructed three types of feature sets including motif features, chromatin features, and chromatin interaction features while for the CNN-based model, we encoded DNA sequences and chromatin accessibility together. The details please refer to our paper.
+
+```
+python feature_generator.py -n <names>
+&
+python encode.py -n <names>
+```
+The parameter <names> means the name of binding factors.
+
+
 ## Model Training
 
 We constructed two models, in which one is based on XGBoost and another is based on CNN.
